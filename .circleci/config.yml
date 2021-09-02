@@ -23,7 +23,7 @@ jobs:
       - image: checkpoint/shiftleft:latest
     steps:
       - checkout
-      - run: shiftleft -D iac-assessment -i Terraform -p ./terraform-template -r -64 -e 0ca7517a-44d6-4467-8817-cb3be721db7a -s medium
+      - run: shiftleft iac-assessment -i Terraform -p ./terraform-template -r -64 -s medium
 
   Image-Scan:
     docker: 
@@ -51,9 +51,9 @@ workflows:
   version: 2
   ShiftLeft_Demo_Pipeline:
     jobs:
-      # - Image-Build          
-      # - Code-Scan
+      - Image-Build          
+      - Code-Scan
       - IaC-Assessment          
-      # - Image-Scan:
-      #     requires:
-      #       - Image-Build
+      - Image-Scan:
+          requires:
+            - Image-Build
