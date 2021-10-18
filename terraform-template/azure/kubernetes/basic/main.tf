@@ -26,6 +26,12 @@ resource "azurerm_kubernetes_cluster" "example" {
     client_secret = "${var.kubernetes_client_secret}"
   }
 
+  addon_profile {
+    http_application_routing = {
+      enabled = false
+    }
+  }
+
   tags = {
     Environment = "Production"
   }
