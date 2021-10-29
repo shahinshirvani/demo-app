@@ -42,4 +42,7 @@ resource "azurerm_kubernetes_cluster" "example" {
   tags = {
     Environment = "Production"
   }
+  network_profile {
+    network_plugin = "azure"
+  }
 }
